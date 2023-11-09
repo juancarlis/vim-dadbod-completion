@@ -277,7 +277,7 @@ endfunction
 
 function! s:count_columns_and_cache(db, count) abort
   let column_count = s:cache[a:db].scheme.count_parser(a:count)
-  if column_count <= 10000
+  if column_count <= 15000
     let [query, stdin] = s:generate_query(a:db, 'column_query')
     call vim_dadbod_completion#job#run(query, function('s:cache_all_columns', [a:db]), stdin)
   endif
